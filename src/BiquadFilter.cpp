@@ -28,7 +28,7 @@ BiquadFilter::~BiquadFilter ()
 {
 	if (buf)
 	{
-		delete buf;
+		delete[] buf;
 		buf = NULL;
 	}
 }
@@ -220,7 +220,7 @@ void BiquadFilter::setBlockSize (VstInt32 blockSize)
 {
 	if (buf)
 	{
-		delete buf;
+		delete[] buf;
 		buf = NULL;
 	}
 	bufsize = blockSize;
