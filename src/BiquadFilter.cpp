@@ -288,17 +288,13 @@ void BiquadFilter::processReplacing (float** inputs, float** outputs, VstInt32 s
 	}
 	for (i=0; i<sampleFrames; i++)
 	{
-		buf[i].L = *in1;
-		buf[i].R = *in2;
-		*in1++;
-		*in2++;
+		buf[i].L = in1[i];
+		buf[i].R = in2[i];
 	}
 	sf_biquad_process(&bq_state, sampleFrames, buf, buf);
 	for (i=0; i<sampleFrames; i++)
 	{
-		*out1 = buf[i].L;
-		*out2 = buf[i].R;
-		*out1++;
-		*out2++;
+		out1[i] = buf[i].L;
+		out2[i] = buf[i].R;
 	}
 }
